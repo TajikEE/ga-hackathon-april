@@ -13,20 +13,15 @@ app.use(
   })
 );
 
-const books = new Map<string, any>();
-books.set("1", {
-  id: "1",
-  title: "The Hound of the Baskervilles",
-  author: "Conan Doyle, Arthur",
-});
+const sentences = ['She danced with him.', 'OK, here it is. I got it.', 'Who do you think I am?', 'Actually, now that I think about it, a lot of people in cities here take the bus also.']
 
 const router = new Router();
 router
   .get("/", (context) => {
     context.response.body = "Hello world of Conan!";
   })
-  .get("/test", (context) => {
-    context.response.body = Array.from(books.values());
+  .get("/sentence", (context) => {
+    context.response.body = sentences;
   })
 
 // const wss = new WebSocketServer(8080);
