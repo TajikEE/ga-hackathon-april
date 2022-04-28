@@ -4,6 +4,7 @@ import { oakCors } from "https://deno.land/x/cors/mod.ts";
 //   WebSocketClient,
 //   WebSocketServer,
 // } from "https://deno.land/x/websocket@v0.1.4/mod.ts";
+import { sentences, randomId } from "./data.ts";
 
 const app = new Application();
 
@@ -13,16 +14,17 @@ app.use(
   })
 );
 
-const sentences = ['She danced with him', 'OK here it is I got it', 'Who do you think I am', 'Actually now that I think about it a lot of people in cities here take the bus also']
+
 
 const router = new Router();
 router
   .get("/", (context) => {
-    context.response.body = "Hello world of Conan!";
+    context.response.body = "Hello world!";
   })
   .get("/sentences", (context) => {
-    context.response.body = sentences;
-  })
+    const res = {id: randomId(), sentences}
+    context.response.body = res;
+  });
 
 // const wss = new WebSocketServer(8080);
 // wss.on("connection", function (ws: WebSocketClient) {
