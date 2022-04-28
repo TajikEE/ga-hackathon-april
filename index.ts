@@ -24,7 +24,7 @@ router.get("/ws", async (ctx) => {
   const sock = await ctx.upgrade();
   console.log('asdasd', sock);
 
-  return sock
+  return await sock.send("please work");
 });
 
 app.use(router.routes());
