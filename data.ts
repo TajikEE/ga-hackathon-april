@@ -1,4 +1,4 @@
-export const sentences = [
+export const sentences: string[] = [
   "She danced with him",
   "OK here it is I got it",
   "Who do you think I am",
