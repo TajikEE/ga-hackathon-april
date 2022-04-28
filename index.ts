@@ -13,7 +13,7 @@ app.use(
   })
 );
 
-const sentences = ['She danced with him.', 'OK, here it is. I got it.', 'Who do you think I am?', 'Actually, now that I think about it, a lot of people in cities here take the bus also.']
+const sentences = ['She danced with him', 'OK here it is I got it', 'Who do you think I am', 'Actually now that I think about it a lot of people in cities here take the bus also']
 
 const router = new Router();
 router
