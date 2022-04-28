@@ -1,31 +1,14 @@
-  
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
-import { oakCors } from "https://deno.land/x/cors/mod.ts";
+import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
 
-const messages = [];
-const channel = new BroadcastChannel("chat");
-channel.onmessage = (event) => {
-  messages.push(event.data);
-};
-
-const router = new Router();
-router
-  .get("/", (context) => {
-    context.response.body = "Chat server!";
-  })
-  .get("/messages", (context) => {
-    context.response.body = messages;
-  })
-  .post("/messages", async (context) => {
-    const message = await context.request.body().value;
-    messages.push(message);
-    channel.postMessage(message);
-    context.response.body = messages;
+function handler(_req: Request) {
+  const data = {
+    Hello: "World!",
+  };
+  const body = JSON.stringify(data, null, 2);
+  return new Response(body, {
+    headers: { "content-type": "application/json; charset=utf-8" },
   });
+}
 
-const app = new Application();
-app.use(oakCors());
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-addEventListener("fetch", app.fetchEventHandler());
+console.log("Listening on http://localhost:8000");
+serve(handler);
