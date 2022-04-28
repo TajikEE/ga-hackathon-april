@@ -25,13 +25,10 @@ router
   .get("/", (context) => {
     context.response.body = "Hello world of Conan!";
   })
-  .get("/book", (context) => {
+  .get("/test", (context) => {
     context.response.body = Array.from(books.values());
   })
-  .get("/book/:id", (context) => {
-    if (books.has(context?.params?.id)) {
-      context.response.body = books.get(context.params.id);
-    }
+
   });
 
 const wss = new WebSocketServer(8080);
