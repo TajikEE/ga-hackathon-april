@@ -22,7 +22,7 @@ router
 
 router.get("/ws", async (ctx) => {
   const sock = await ctx.upgrade();
-  console.log(sock);
+  console.log('asdasd', sock);
 
   return sock
 });
