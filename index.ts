@@ -20,7 +20,7 @@ router
   .get("/", (context) => {
     context.response.body = "Hello world of Conan!";
   })
-  .get("/sentence", (context) => {
+  .get("/sentences", (context) => {
     context.response.body = sentences;
   })
 
