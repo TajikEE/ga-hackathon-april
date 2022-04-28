@@ -1,9 +1,9 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
-import {
-  WebSocketClient,
-  WebSocketServer,
-} from "https://deno.land/x/websocket@v0.1.4/mod.ts";
+// import {
+//   WebSocketClient,
+//   WebSocketServer,
+// } from "https://deno.land/x/websocket@v0.1.4/mod.ts";
 
 const app = new Application();
 
@@ -29,13 +29,13 @@ router
     context.response.body = Array.from(books.values());
   })
 
-const wss = new WebSocketServer(8080);
-wss.on("connection", function (ws: WebSocketClient) {
-  ws.on("message", function (message: string) {
-    console.log(message);
-    ws.send(message);
-  });
-});
+// const wss = new WebSocketServer(8080);
+// wss.on("connection", function (ws: WebSocketClient) {
+//   ws.on("message", function (message: string) {
+//     console.log(message);
+//     ws.send(message);
+//   });
+// });
 
 app.use(router.routes());
 app.use(router.allowedMethods());
